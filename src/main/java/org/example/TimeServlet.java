@@ -30,7 +30,7 @@ public class TimeServlet extends HttpServlet {
         String modifiedDateTime = localDateTime.format(dateTimeFormatter);
 
         out.write("<p>${dateTime}</p>"
-                .replace("${dateTime}", modifiedDateTime));
+                .replace("${dateTime}", modifiedDateTime + " " + timeZone));
         out.close();
     }
 }

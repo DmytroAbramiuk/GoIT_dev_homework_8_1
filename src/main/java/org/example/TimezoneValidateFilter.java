@@ -18,6 +18,11 @@ public class TimezoneValidateFilter extends HttpFilter {
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         String timeZoneVal = req.getParameter("timezone");
 
+        if(timeZoneVal==null){
+            chain.doFilter(req, res);
+            return;
+        }
+
         try{
             ZoneId.of(timeZoneVal);
         } catch (RuntimeException e){
